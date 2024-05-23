@@ -1,0 +1,46 @@
+name: challenge
+
+on:
+  # Triggers the workflow on push or pull request events but only for the "main" branch
+  push:
+    branches: [ "main" ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+    job1:
+        name: First job
+        runs-on: ubuntu-latest
+        steps:
+             - name: Step one
+               uses: actions/checkout@v2
+             - name: Step two
+              run: The date is 05/23/2024
+
+    job2:
+        name: Second job
+        runs-on: windows-latest
+        steps:
+             - name: Step one
+               uses: actions/checkout@v2
+             - name: Step two
+              run: The date is 05/23/2024
+
+   job3:
+        name: Third job
+        runs-on: macos-latest
+        steps:
+             - name: Step one
+               uses: actions/checkout@v2
+             - name: Step two
+              run: The date is 05/23/2024
+   job4:
+        name: Fourth job
+        needs: job1,job2,job3
+        runs-on: ubuntu-latest
+        steps:
+             - name: Step one
+               uses: actions/checkout@v2
+             - name: Step two
+              run: The date is 05/23/2024
