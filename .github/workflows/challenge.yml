@@ -9,38 +9,21 @@ on:
   workflow_dispatch:
 
 jobs:
-    job1:
-        name: First job
-        runs-on: ubuntu-latest
-        steps:
-             - name: Step one
-               uses: actions/checkout@v2
-             - name: Step two
-              run: The date is 05/23/2024
-
-    job2:
-        name: Second job
-        runs-on: windows-latest
-        steps:
-             - name: Step one
-               uses: actions/checkout@v2
-             - name: Step two
-              run: The date is 05/23/2024
-
-   job3:
-        name: Third job
-        runs-on: macos-latest
-        steps:
-             - name: Step one
-               uses: actions/checkout@v2
-             - name: Step two
-              run: The date is 05/23/2024
-   job4:
-        name: Fourth job
-        needs: job1,job2,job3
-        runs-on: ubuntu-latest
-        steps:
-             - name: Step one
-               uses: actions/checkout@v2
-             - name: Step two
-              run: The date is 05/23/2024
+    ubuntu:
+       runs-on: ubuntu-latest
+       steps:
+       - run: date
+    windows:
+       runs-on: windows-latest
+       steps:
+       - run: date
+    macos:
+       runs-on: ubuntu-latest
+       steps:
+       - run: date
+    depends:
+       needs: [ubuntu, windows, macos]
+       runs-on: macos-latest
+       steps:
+       - run: date
+    
